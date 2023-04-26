@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2-正则命名分组</title>
+</head>
+
+<body>
+  <script>
+    // 声明一个字符串
+    // let str = `<a href="https://codeslive.top">小康</a>`;
+    // // 提前 url 与 标签文本
+    // const reg = /<a href="(.*)">(.*)<\/a>/;
+    // // 执行
+    // const result = reg.exec(str);
+    // console.log(result);
+
+    let str = `<a href="https://codeslive.top">小康</a>`;
+    // 分组命名
+    const reg = /<a href="(?<url>.*)">(?<text>.*)<\/a>/;
+    const result = reg.exec(str);
+    console.log(result.groups.url);
+    console.log(result.groups.text);
+  </script>
+</body>
+
+</html>

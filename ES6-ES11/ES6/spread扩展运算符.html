@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>spread扩展运算符</title>
+</head>
+
+<body>
+  <script>
+    // 声明一个数组
+    const boys = ['猪猪侠', '熊大', '熊二'];
+    // => '猪猪侠','熊大', '熊二'
+
+    // 声明一个函数
+    function chunwan () {
+      console.log(arguments);
+
+    }
+    chunwan(...boys); // '猪猪侠','熊大', '熊二'
+
+  </script>
+</body>
+
+</html>

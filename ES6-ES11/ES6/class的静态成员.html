@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>class的静态成员</title>
+</head>
+
+<body>
+  <script>
+    class Phone {
+      // 静态属性
+      static name = '手机';
+      static change () {
+        console.log('我可以改变世界');
+      }
+    }
+
+    let nokia = new Phone();
+    console.log(nokia.name); // undefined
+    console.log(Phone.name); // 手机
+
+
+
+  </script>
+</body>
+
+</html>

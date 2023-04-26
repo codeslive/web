@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>class类继承-2</title>
+</head>
+
+<body>
+  <script>
+    class Phone {
+      // 构造方法
+      constructor(brand, price) {
+        this.brand = brand;
+        this.price = price;
+      }
+    }
+
+    class SmartPhone extends Phone {
+      // 构造方法
+      constructor(brand, price, color, size) {
+        super(brand, price);
+        this.color = color;
+        this.size = size;
+      }
+
+      photo () {
+        console.log('拍照');
+
+      }
+      playGame () {
+        console.log('玩游戏');
+
+      }
+      call () {
+        console.log('我可以进行视频通话');
+      }
+    }
+
+    const xiaomi = new SmartPhone('小米', 799, '黑色', '4.7inch');
+    xiaomi.call(); // 我可以进行视频通话
+    xiaomi.photo(); // 拍照
+    xiaomi.playGame(); // 玩游戏
+
+  </script>
+</body>
+
+</html>
