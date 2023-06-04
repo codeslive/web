@@ -4,9 +4,9 @@
 <template>
   <div><h1>这是主应用</h1></div>
   <!-- 子应用vue3 -->
-  <WujieVue name="vue3" url="http://localhost:5176/"></WujieVue>
+  <WujieVue name="vue3" url="http://localhost:5176/" exec="true"></WujieVue>
   <!-- 子应用react -->
-  <WujieVue name="react" url="http://localhost:5175/"></WujieVue>
+  <WujieVue name="react" url="http://localhost:5175/" exec="true"></WujieVue>
 </template>
 
 <style scoped>
