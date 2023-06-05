@@ -10,20 +10,43 @@
 
 <body>
   <button id="btn">发送</button>
+  <div><span id="text"></span></div>
   <script>
     const btn = document.querySelector('#btn');
     btn.addEventListener('click', () => {
       sendFetch()
     });
 
+    const text = document.querySelector('#text');
+
     const sendFetch = () => {
       // 第一个参数 url 默认请求方式 get 返回值是一个 promise 对象
-      fetch('https://mibook.codeslive.top/api/public/book/findSale5').then(res=>{
+      fetch('/api/public/book/findSale5').then(res => {
         console.log(res);
+        // 设置一个进度条
+        const total = res.headers.get('content-length');
+        let loaded = 0;
+        const progress = document.createElement('progress');
+        progress.max = total;
+        document.body.appendChild(progress);
+        // 监听数据传输
+        const reader = res.body.getReader();
+        reader.read().then(function processResult(result) {
+          if (result.done) {
+            console.log('Fetch complete');
+            return;
+          }
+          loaded += result.value.length;
+          console.log(`Received ${loaded} of ${total}`);
+          progress.value = loaded;
+          // Read some more, and call this function again
+          // return reader.read().then(processResult);
+        });
         
-        // res.json() 返回值是一个 promise 对象
-        return res.json()
-      }).then(data=>{
+        return res.json();
+        
+
+      }).then(data => {
         console.log(data.data)
       })
     }
