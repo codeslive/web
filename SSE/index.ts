@@ -15,7 +15,7 @@ app.get('/api/sse', (req, res) => {
   // 将文件内容转换为数组
   const arr = txt.split('');
   let current = 0;
-  // 每隔300ms发送一次数据
+  // 每隔100ms发送一次数据
   let timer = setInterval(() => {
     if (current < arr.length) {
       res.write(`data: ${arr[current]}\n\n`);
