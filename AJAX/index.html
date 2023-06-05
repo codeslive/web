@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX</title>
+</head>
+<style>
+  #btn {
+    width: 100px;
+    height: 50px;
+    background-color: deepskyblue;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    margin-top: 10px;
+  }
+
+  #progress {
+    width: 0;
+    height: 3px;
+    background-color: red;
+  }
+</style>
+
+<body>
+  <!-- 进度条 -->
+  <div id="progress"></div>
+  <button id="btn">发送</button>
+  <button id="stop">中断请求</button>
+  <input id="file" type="file">
+  <script>
+    const btn = document.getElementById('btn');
+
+    const file = document.getElementById('file');
+    file.addEventListener('change', () => {
+      const formData = new FormData();
+      formData.append('file', file.files[0]);
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/api/upload', true);
+      // xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(JSON.parse(xhr.responseText));
+        }
+      }
+      xhr.send(formData);
+    });
+
+    btn.addEventListener('click', () => {
+      sendAjax();
+    });
+
+    const stop = document.getElementById('stop');
+
+    const sendAjax = () => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://demo-api.apipost.cn/api/demo/news_list?mobile=18289454846&theme_news=国际新闻&page=1&pageSize=30', true);
+
+      // 设置请求头 json格式 放在open下面
+      xhr.setRequestHeader('Content-Type', 'application/json');
+
+      xhr.addEventListener('progress', (event) => {
+        const progress = document.getElementById('progress');
+        console.log(event);
+        // 保留两位小数
+        progress.style.width = `${(event.loaded / 3 * 100).toFixed(2)}%`;
+      });
+
+      xhr.addEventListener('abort', () => {
+        console.log('请求中断');
+      });
+
+      stop.addEventListener('click', () => {
+        xhr.abort();
+      });
+
+      xhr.timeout = 1000 * 60;
+      xhr.ontimeout = () => {
+        console.log('请求超时');
+      }
+
+
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(JSON.parse(xhr.responseText));
+        }
+      }
+      xhr.send(JSON.stringify({
+        name: 'xiaokang',
+        age: 18
+      }));
+    }
+
+  </script>
+</body>
+
+</html>

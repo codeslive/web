@@ -2,7 +2,7 @@ const { Configuration } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 /**
- * @type {Configuration}  // 配置智能提示
+ * @type {Configuration}  // 配置智能提示                   
 */
 const config = {
   entry: './index.js',

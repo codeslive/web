@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fetch</title>
+</head>
+
+<body>
+  <button id="btn">发送</button>
+  <script>
+    const btn = document.querySelector('#btn');
+    btn.addEventListener('click', () => {
+      sendFetch()
+    });
+
+    const sendFetch = () => {
+      // 第一个参数 url 默认请求方式 get 返回值是一个 promise 对象
+      fetch('https://mibook.codeslive.top/api/public/book/findSale5').then(res=>{
+        console.log(res);
+        
+        // res.json() 返回值是一个 promise 对象
+        return res.json()
+      }).then(data=>{
+        console.log(data.data)
+      })
+    }
+  </script>
+</body>
+
+</html>
