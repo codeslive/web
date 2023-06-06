@@ -1,10 +1,8 @@
-
 export let a = 1;
 // 实现一个累加
 for (let i = 0; i < 10; i++) {
   a += i;
 }
-
 
 // 冒泡排序
 export function bubbleSort(arr: number[]) {
@@ -19,7 +17,6 @@ export function bubbleSort(arr: number[]) {
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
       }
-      // console.log(arr);
     }
   }
   return arr;
