@@ -1,7 +1,11 @@
 import ReportButton from "./components/ReportButton";
-function App() {
-  return(
-    <div><ReportButton></ReportButton></div>
+import Counter from "./components/Counter";
+function App () {
+  return (
+    <div>
+      <ReportButton></ReportButton>
+      <Counter></Counter>
+    </div>
   )
 }
 
