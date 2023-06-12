@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webSocket</title>
+</head>
+
+<body>
+
+  <div>
+    <ul id="list"></ul>
+    <input type="text" id="input">
+    <button id="send">发送</button>
+    <button id="stop">断开</button>
+  </div>
+
+  <script>
+    // webSocket 协议 ws:// wss:// 就跟 http:// https:// 一样
+    const ws = new WebSocket('ws://localhost:8080');
+    // open 连接成功
+    ws.addEventListener('open', () => {
+      console.log('连接成功');
+    });
+
+    let text = document.getElementById('input');
+    let btn = document.getElementById('send');
+    let list = document.getElementById('list');
+    btn.addEventListener('click', () => {
+      // 为空不发送
+      if (!text.value) return;
+      ws.send(text.value);
+      text.value = '';
+    });
+
+    ws.addEventListener('message', (e) => {
+      // 接收到的数据
+      let li = document.createElement('li');
+      let data = JSON.parse(e.data);
+      //if (data.type == 2) {
+        li.innerHTML = data.message;
+        list.appendChild(li);
+      //}
+    });
+
+    // 关闭连接
+    let stop = document.getElementById('stop');
+    stop.addEventListener('click', () => {
+      ws.close();
+    });
+  </script>
+</body>
+
+</html>
