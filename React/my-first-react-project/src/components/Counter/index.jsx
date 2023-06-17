@@ -15,9 +15,10 @@ export default function Counter (props) {
   return (
     <div>
       <button onClick={increase}>+</button>
-      <span>{count}</span>
+      <span>{count}</span> 
       <button onClick={decrease}>-</button><br />
       <span>{props.defaultValue}</span>
     </div>
   )
+  
 }
