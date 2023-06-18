@@ -20,5 +20,4 @@ export default function Counter (props) {
       <span>{props.defaultValue}</span>
     </div>
   )
-  
 }

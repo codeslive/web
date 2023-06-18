@@ -1,6 +1,9 @@
 import { useState } from "react";
 // import ReportButton from "./components/ReportButton";
 import Counter from "./components/Counter";
+import UseEffectes from "./components/useEffect";
+import StudentList from "./components/StudentList";
+import ListName from "./components/ListName";
 function App () {
 
   const [obj, setObj] = useState({
@@ -46,6 +49,12 @@ function App () {
       <button onClick={updateObjArrValue}>更新数组</button><br />
       数组:{arr}
       {/* <Counter></Counter> */}
+      <hr />
+      <UseEffectes></UseEffectes>
+      <hr />
+      <StudentList></StudentList>
+      <hr />
+      <ListName></ListName>
     </div>
   )
 }
