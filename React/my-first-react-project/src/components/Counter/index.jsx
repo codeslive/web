@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 export default function Counter (props) {
   // 这会count的值变动了 它虽然是Counter内部的数据, 但是它凭什么能够让React去重新渲染组件呢
   // 我们要知道 函数组件内部的数据有很多种, 那我们要选能够通知React去重新渲染组件的数据
@@ -8,14 +8,14 @@ export default function Counter (props) {
   // 由于没有给 getCountValue做任何性能的处理, 每次组件的重新渲染他都毫无例外的参与了引用的变化
   // 不给任何一路来的后果, 是不是使用拿的首次渲染时的时间切片：0
 
-  const addCount = useCallback(() => {
+  const addCount = useMemo(()=>() => {
     setCount(prev => prev + 1);
   }, []);
 
   const getCountValue = useCallback(() => {
     console.log("最新的countValue", count);
   }, [count]); 
-
+  
   return (
     <div>
       <button onClick={addCount}>+</button>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { getList } from "./request";
 import StudentItem from "./components/studentItem/index";
 import useRequestLoadingDispatcher from "./components/useRequestLoadingDispatcher/index";
@@ -26,12 +26,19 @@ export default function ListName () {
     fetchFromServer();
   }, [])
 
+  // 需求 1. 我要把学生的名字拿出来
+  const studentNameList = useMemo(() => list.map(stu => stu.name), [list]);
 
   return (
     <div>
       {
         loading ? <p>加载中...</p> : list.map(student => <StudentItem key={student.name} {...student} />)
       }
+      <hr />
+      {
+        studentNameList
+      }
+      <hr />
     </div>
 
   )
