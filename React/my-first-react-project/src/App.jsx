@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 // import ReportButton from "./components/ReportButton";
 import Counter from "./components/Counter";
 import UseEffectes from "./components/useEffect";
@@ -6,8 +6,11 @@ import StudentList from "./components/StudentList";
 import ListName from "./components/ListName";
 import ForceUpateTest from "./components/ForceUpateTest";
 import Ticker from "./components/Ticker";
+import TestInput from "./components/TestInput"
 function App () {
 
+  const testInputRef = useRef(null);
+  const couterRef = useRef(null);
   const [obj, setObj] = useState({
     a: 1,
     b: 2
@@ -15,7 +18,9 @@ function App () {
 
   const [countValue, setCountValue] = useState(10);
   const handleClick = () => {
-    setCountValue(prev => prev + 1);
+    // setCountValue(prev => prev + 1);
+    // testInputRef.current.focus();
+    console.log("counterRef", couterRef);
   }
 
   const [arr, setArr] = useState([]);
@@ -56,11 +61,14 @@ function App () {
       <hr />
       <StudentList></StudentList>
       <hr /> */}
-      <Counter></Counter>
+      <Counter ref={couterRef} defaultValue={10}></Counter>
       <hr />
       <Ticker></Ticker>
       <hr />
       <Ticker></Ticker>
+      <hr />
+      <TestInput a={10} ref={testInputRef}></TestInput>
+      <button onClick={handleClick}>click me</button>
       <hr />
       <ListName></ListName>
       <ForceUpateTest></ForceUpateTest>
