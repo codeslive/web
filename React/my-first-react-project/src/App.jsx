@@ -38,7 +38,7 @@ function App () {
   return (
     <div>
       {/* <ReportButton></ReportButton> */}
-      <Counter defaultValue={countValue}></Counter>
+      {/* <Counter defaultValue={countValue}></Counter>
       <hr />
       <button onClick={handleClick}>点击我</button><br />
       <hr />
@@ -46,14 +46,14 @@ function App () {
       a:{obj.a}
       b:{obj.b}
       <hr />
-      <button onClick={updateObjArrValue}>更新数组</button><br />
-      数组:{arr}
+      <button onClick={updateObjArrValue}>更新数组</button><br /> */}
+      {/* 数组:{arr} */}
       {/* <Counter></Counter> */}
-      <hr />
+      {/* <hr />
       <UseEffectes></UseEffectes>
       <hr />
       <StudentList></StudentList>
-      <hr />
+      <hr /> */}
       <ListName></ListName>
     </div>
   )
