@@ -4,6 +4,7 @@ import Counter from "./components/Counter";
 import UseEffectes from "./components/useEffect";
 import StudentList from "./components/StudentList";
 import ListName from "./components/ListName";
+import ForceUpateTest from "./components/ForceUpateTest";
 function App () {
 
   const [obj, setObj] = useState({
@@ -55,6 +56,7 @@ function App () {
       <StudentList></StudentList>
       <hr /> */}
       <ListName></ListName>
+      <ForceUpateTest></ForceUpateTest>
     </div>
   )
 }

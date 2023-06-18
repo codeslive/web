@@ -23,7 +23,7 @@ export default function ListName () {
   return (
     <div>
       {
-        loading ? <p>加载中...</p> : list.map(student => <StudentItem {...student} />)
+        loading ? <p>加载中...</p> : list.map(student => <StudentItem key={student.name} {...student} />)
       }
     </div>
 
