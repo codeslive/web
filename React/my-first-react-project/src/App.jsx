@@ -55,6 +55,8 @@ function App () {
       <hr />
       <StudentList></StudentList>
       <hr /> */}
+      <Counter></Counter>
+      <hr />
       <ListName></ListName>
       <ForceUpateTest></ForceUpateTest>
     </div>
