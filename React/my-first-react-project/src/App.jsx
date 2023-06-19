@@ -6,11 +6,14 @@ import StudentList from "./components/StudentList";
 import ListName from "./components/ListName";
 import ForceUpateTest from "./components/ForceUpateTest";
 import Ticker from "./components/Ticker";
-import TestInput from "./components/TestInput"
+import TestInput from "./components/TestInput";
+import ThemeContext from "./components/Context/themeContext";
 function App () {
 
   const testInputRef = useRef(null);
   const couterRef = useRef(null);
+  const [theme, setTheme] = useState("light");
+
   const [obj, setObj] = useState({
     a: 1,
     b: 2
@@ -21,6 +24,13 @@ function App () {
     // setCountValue(prev => prev + 1);
     // testInputRef.current.focus();
     console.log("counterRef", couterRef);
+  }
+
+  const changeTheme = () => {
+    setTheme(prev => {
+      if (prev === "light") return "dark";
+      return "light";
+    });
   }
 
   const [arr, setArr] = useState([]);
@@ -61,17 +71,20 @@ function App () {
       <hr />
       <StudentList></StudentList>
       <hr /> */}
-      <Counter ref={couterRef} defaultValue={10}></Counter>
-      <hr />
-      <Ticker></Ticker>
-      <hr />
-      <Ticker></Ticker>
-      <hr />
-      <TestInput a={10} ref={testInputRef}></TestInput>
-      <button onClick={handleClick}>click me</button>
-      <hr />
-      <ListName></ListName>
-      <ForceUpateTest></ForceUpateTest>
+      <ThemeContext.Provider value={theme}>
+        <Counter ref={couterRef} defaultValue={10}></Counter>
+        <hr />
+        <Ticker></Ticker>
+        <hr />
+        <Ticker></Ticker>
+        <hr />
+        <TestInput a={10} ref={testInputRef}></TestInput>
+        <button onClick={handleClick}>click me</button>
+        <hr />
+        <ListName></ListName>
+        <button onClick={changeTheme}>changeTheme</button>
+        <ForceUpateTest></ForceUpateTest>
+      </ThemeContext.Provider>
     </div>
   )
 }
