@@ -8,6 +8,8 @@ import ForceUpateTest from "./components/ForceUpateTest";
 import Ticker from "./components/Ticker";
 import TestInput from "./components/TestInput";
 import ThemeContext from "./components/Context/themeContext";
+import TabView from "./components/TabView";
+import TransitionCase from "./components/TransitionCase";
 function App () {
 
   const testInputRef = useRef(null);
@@ -72,6 +74,10 @@ function App () {
       <StudentList></StudentList>
       <hr /> */}
       <ThemeContext.Provider value={theme}>
+        <TransitionCase></TransitionCase>
+        <hr />
+        <TabView></TabView>
+        <hr />
         <Counter ref={couterRef} defaultValue={10}></Counter>
         <hr />
         <Ticker></Ticker>
