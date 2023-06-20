@@ -46,7 +46,7 @@ export default function TabView () {
       {
         tabs.map(tabObj => {
           return (
-            <button key={tabObj.label} onClick={() => changeTab(tabObj.key)}>{tabObj.label}</button>
+            <button className="bg-red-400 text-white max-md:bg-emerald-300" key={tabObj.label} onClick={() => changeTab(tabObj.key)}>{tabObj.label}</button>
           )
         })
       }

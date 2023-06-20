@@ -1,0 +1,24 @@
+@primiry-color: #1e90ff;
+
+.wrapper {
+  width: 100px;
+  height: 44px;
+  background-color: @primiry-color;
+  border-radius: 12px;
+  text-align: center;
+  line-height: 44px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4;
+  user-select: none;
+
+  &:hover {
+    background-color: #71afed;
+  }
+
+  &:active {
+    background-color: #81bcf6;
+    transform: scale(0.9);
+  }
+}
