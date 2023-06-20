@@ -10,6 +10,7 @@ import TestInput from "./components/TestInput";
 import ThemeContext from "./components/Context/themeContext";
 import TabView from "./components/TabView";
 import TransitionCase from "./components/TransitionCase";
+import TestUseState from "./components/TestUseState";
 function App () {
 
   const testInputRef = useRef(null);
@@ -74,6 +75,9 @@ function App () {
       <StudentList></StudentList>
       <hr /> */}
       <ThemeContext.Provider value={theme}>
+        {/* <TestUseState></TestUseState>
+        <TestUseState></TestUseState> */}
+        <hr />
         <TransitionCase></TransitionCase>
         <hr />
         <TabView></TabView>
