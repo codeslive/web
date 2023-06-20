@@ -1,5 +1,5 @@
-export default function NewsItem () {
+export default function NewsItem (props) {
   return (
-    <div>newsItem</div>
+    <div>newsItem:{props.item + 1}</div>
   )
 }

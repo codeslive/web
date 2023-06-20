@@ -10,7 +10,7 @@ export default function TransitionCase () {
       setInputValue(event.target.value);
       const _innerRecommendList = [];
       // 处理大量数据 使用useTransition优化 这是因为react会在每次渲染时都会去比较前后两次的虚拟dom树，如果数据量过大，会导致渲染时间过长，从而导致页面卡顿
-      for (let i = 0; i < 15000; i++) {
+      for (let i = 0; i < 500; i++) {
         _innerRecommendList.push(`${event.target.value}_react_${i}`);
       }
       setrecommendList(_innerRecommendList);
@@ -20,7 +20,7 @@ export default function TransitionCase () {
 
   return (
     <div>
-      <input value={inputValue} onChange={handleChange} />
+      <input type="text" value={inputValue} onChange={handleChange} />
       {
         isPending ? (<div>正在计算中……</div>) : (
           recommendList.map(elm => {

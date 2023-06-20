@@ -2,7 +2,7 @@ import { useState } from "react";
 import NewsItem from "./NewsItem";
 const arr = [];
 
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 1500; i++) {
   arr.push(i);
 }
 export default function NewsList () {
@@ -12,7 +12,11 @@ export default function NewsList () {
   return (
     <div>
       {
-        news.map(newDescriptor => <NewsItem newDescriptor={newDescriptor} />)
+        // 绑上key
+        news.map((item, index) => {
+          return <NewsItem key={index} item={item} />
+        }
+        )
       }
     </div>
   )
