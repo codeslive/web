@@ -1,3 +1,4 @@
+// 导入 404 页面的容器组件
 import Container from './Container.jsx';
 export default function NotFound () {
   return (
