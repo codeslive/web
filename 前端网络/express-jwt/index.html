@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index</title>
+</head>
+
+<body>
+  <!-- 登录表单 -->
+  <form>
+    <input type="text" id="username" placeholder="请输入用户名">
+    <input type="password" id="password" placeholder="请输入密码">
+    <input id="btn" type="button" value="登录">
+  </form>
+
+  <script>
+    const btn = document.querySelector('#btn');
+    const username = document.querySelector('#username');
+    const password = document.querySelector('#password');
+
+    btn.addEventListener('click', () => {
+      fetch('http://localhost:9000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: username.value,
+          password: password.value
+        })
+      }).then(res => res.json()).then(res => {
+        // 请求成功后跳转到首页
+        if (res.code === 200) {
+          // 保存token
+          localStorage.setItem('token', res.token);
+          location.href = './list.html';
+        }
+      })
+    });
+
+
+  </script>
+</body>
+
+</html>
