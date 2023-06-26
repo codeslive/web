@@ -22,6 +22,13 @@
 
     // 登录函数
     function login (url) {
+
+      // 判断用户名和密码是否为空
+      if(username.value === '' || password.value === '') {
+        alert('用户名或密码不能为空');
+        return;
+      }
+
       fetch(url, {
         method: 'POST',
         headers: {
