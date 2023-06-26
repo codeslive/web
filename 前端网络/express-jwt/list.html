@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>list</title>
 </head>
+
 <body>
   <script>
-    // 获取token
-    const token = localStorage.getItem('token');
-    fetch('http://localhost:9000/api/list', {
-      headers: {
-        'Authorization': token
-      }
-    }).then(res => res.json()).then(res => {
-      console.log(res);
-    });
+    // 封装请求函数
+    function getList (url) {
+      // 获取token
+      const token = localStorage.getItem('token');
+      fetch(url, {
+        headers: {
+          'Authorization': token
+        }
+      }).then(res => res.json()).then(res => {
+        console.log(res);
+      })
+    }
+    // 调用请求函数
+    getList('http://localhost:9000/api/list');
   </script>
 </body>
+
 </html>
-
-

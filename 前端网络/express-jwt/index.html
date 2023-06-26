@@ -20,8 +20,9 @@
     const username = document.querySelector('#username');
     const password = document.querySelector('#password');
 
-    btn.addEventListener('click', () => {
-      fetch('http://localhost:9000/api/login', {
+    // 登录函数
+    function login (url) {
+      fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -31,13 +32,20 @@
           password: password.value
         })
       }).then(res => res.json()).then(res => {
-        // 请求成功后跳转到首页
-        if (res.code === 200) {
-          // 保存token
-          localStorage.setItem('token', res.token);
-          location.href = './list.html';
+        if (res.code !== 200) {
+          alert(res.message);
+          return;
         }
+        // 保存token
+        localStorage.setItem('token', res.token);
+        // 跳转到列表页
+        location.href = './list.html';
       })
+    }
+
+    // 绑定点击事件
+    btn.addEventListener('click', () => {
+      login('http://localhost:9000/api/login');
     });
 
 
