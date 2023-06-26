@@ -33,7 +33,7 @@ app.post('/api/login', (req: Request, res: Response) => {
   res.json({
     message: '登录成功',
     token: jwt.sign({ id: user.id }, Key, { expiresIn: '1h' }),
-    code: 200
+    code: 200,
   })
 
 });
@@ -42,8 +42,8 @@ app.post('/api/login', (req: Request, res: Response) => {
 app.get('/api/list', (req: Request, res: Response) => {
   // 获取前端传递过来的 token
   const token = req.headers.authorization as string; // 前端会把 token 放在请求头中 authorization 字段中
-  jwt.verify(token, Key,(err:any, decode:any)=>{
-    if(err){
+  jwt.verify(token, Key, (err: any, decode: any) => {
+    if (err) {
       return res.status(403).json({
         message: '无权限访问'
       });
