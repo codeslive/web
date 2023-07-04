@@ -9,6 +9,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
+    "allowJs": true,
+    "esModuleInterop": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
